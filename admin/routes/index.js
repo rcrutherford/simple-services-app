@@ -6,7 +6,7 @@ var request = require('request');
 var myURL = "http://localhost:1337/localhost:8080/employees";
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	request(myURL, function (error, response, body) {
+	request({ url: myURL, method: "GET"}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 	    	//console.log(body) // Print the google web page.
 	    	var jsonbody = JSON.parse(body);

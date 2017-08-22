@@ -8,7 +8,8 @@ router.get('/:id', function(req, res, next) {
     var dbid = req.params.id;
     console.log(dbid)
     var myURL = `http://localhost:1337/localhost:8080/employees/${dbid}`;
-    request.delete(myURL, function(error, response, body) {
+    // request.delete(myURL, 
+    request({ url: myURL, method: "DELETE"}, function(error, response, body) {
             console.log("statusCode: " + response.statusCode)
             if (!error && response.statusCode == 200) {
             	console.log("delete:")
