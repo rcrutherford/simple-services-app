@@ -1,0 +1,23 @@
+extends layout
+mixin employeelistitem(emparray)
+	each item in emparray
+		li.employee 
+			.name= item.firstname+" "+item.lastname 
+			.cdate= item.createdate
+			.mdate= item.modifydate
+			a(href="http://localhost:3333/del/"+ item._id )
+				button.del(type="button" data-dbid=item._id onclick="return confirm('Delete the employee?')")  Delete
+			a(href="http://localhost:3333/view/"+ item._id )
+				button.view(type="button" data-dbid=item._id ) View
+
+block content
+	h2= title
+	h5 Master List
+	ul.employees
+		li.employee 
+			.name.header Name
+			.cdate.header CreateDate
+			.mdate.header ModifyDate
+		+employeelistitem(results)
+		
+

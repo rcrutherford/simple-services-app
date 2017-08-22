@@ -1,0 +1,20 @@
+extends layout
+mixin employeelistitem(emparray)
+	p=  emparray[0].firstname
+	p=  emparray[0].lastname
+	p=  emparray[0].createdate
+	p=  emparray[0].modifydate
+		
+block content
+	h2= title
+	.dview
+		.col1 
+			p FirstName:
+			p LastName:
+			p CreateDate:
+			p ModifyDate:
+		.detail: +employeelistitem(results)
+	a(href="http://localhost:3333/del/"+results[0]._id)
+		button.del(type="button" data-dbid=results[0]._id onclick="return confirm('Delete the employee?')") Delete
+	a(href="http://localhost:3333/edit/"+results[0]._id)
+		button.view(type="button" data-dbid=results[0]._id) Edit

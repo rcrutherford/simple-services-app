@@ -1,0 +1,17 @@
+extends layout
+mixin employeelistitem(emparray)
+	input(class="input",name="firstname",id="firstname",type="text", value= emparray[0].firstname)
+	input(class="input",name="lastname",id="lastname",type="text", value= emparray[0].lastname)
+		
+block content
+	h2= title
+	form(action="http://localhost:3333/save/"+results[0]._id)
+		.dview
+			.col1
+				p FirstName:
+				p LastName:
+			.col1: +employeelistitem(results)
+		input(class="view submit",name="submit",id="submit",type="submit", value="Save")
+		a(href="http://localhost:3333")
+			button.view(type="button" data-dbid=results[0]._id) Cancel
+			
